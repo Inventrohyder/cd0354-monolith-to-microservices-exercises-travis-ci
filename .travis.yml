@@ -1,24 +1,24 @@
 language: node_js
 node_js:
-	- 13
+  - 13
 
 services:
-	- docker
+  - docker
 
 # Pre-testing installs
 install:
-	- echo "Nothing to install"
+  - echo "Nothing to install"
 
 # Scripts to run such as tests
 before_script:
-	- echo "no tests"
+  - echo "no tests"
 
 script:
-	- docker --version  # Print the version for logging
-	- docker build -t simple-node .
-	- docker tag simple-node YOUR_DOCKER_HUB/simple-node
+  - docker --version  # Print the version for logging
+  - docker build -t simple-node .
+  - docker tag simple-node YOUR_DOCKER_HUB/simple-node
 
 # Tasks to perform after the process is successful
 after_success:
-	- echo "DOCKER_PASSWORD" | docker login -u "DOCKER_USERNAME" --password-stdin
-	- docker push YOUR_DOCKER_HUB/simple-node
+  - echo "DOCKER_PASSWORD" | docker login -u "DOCKER_USERNAME" --password-stdin
+  - docker push YOUR_DOCKER_HUB/simple-node
