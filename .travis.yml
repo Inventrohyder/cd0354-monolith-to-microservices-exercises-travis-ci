@@ -16,9 +16,9 @@ before_script:
 script:
   - docker --version  # Print the version for logging
   - docker build -t simple-node .
-  - docker tag simple-node YOUR_DOCKER_HUB/simple-node
+  - docker tag simple-node "YOUR_DOCKER_HUB"/simple-node
 
 # Tasks to perform after the process is successful
 after_success:
   - echo "DOCKER_PASSWORD" | docker login -u "DOCKER_USERNAME" --password-stdin
-  - docker push YOUR_DOCKER_HUB/simple-node
+  - docker push "YOUR_DOCKER_HUB"/simple-node
